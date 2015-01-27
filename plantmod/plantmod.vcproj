@@ -169,7 +169,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ChilkatDbg.lib Dbghelp.lib"
-				OutputFile="D:\VTCGame\Audition\audition_patch\fmod.dll"
+				OutputFile="D:\Audition\audition_patch\fmod.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				ModuleDefinitionFile=".\plantmod .def"

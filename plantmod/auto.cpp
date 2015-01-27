@@ -126,55 +126,55 @@ void WriteMemoryProcess(DWORD dwAddress, LPCVOID buffer, size_t size, SIZE_T *si
 	}
 }
 int setadmin = 0;
-//int AutoBUMain()
-//{
-//	DWORD OffsetAuto = 0x30;
-//	int result;
-//	int AddressBase;
-//	int space_time;
-//	bool F11PRESS = true;
-//	while(1){
-//		ReadProcessMemory(GetCurrentProcess(), (LPCVOID)(BUCOUNT), &AddressBase, 4, 0);
-//		ReadProcessMemory(GetCurrentProcess(), (LPCVOID)(AddressBase + (TIMESPACE__ + OffsetAuto)), &space_time, 4, 0);
-//		if (GetAsyncKeyState(VK_F3)){
-//			AutoOn = true;
-//			vAuto++;
-//		}
-//		if (GetAsyncKeyState(VK_F4)){
-//			AutoOn = false;
-//			result = 0;
-//		}
-//		if (AutoOn){
-//			if (space_time < 1){
-//				SetSendKey(5);
-//			}
-//		//Canh Phim
-//		DWORD i=0;
-//		DWORD v=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x20);
-//		while(v>=0 && v<=6)
-//		{
-//			i++;
-//			v=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x20);
-//		}
-//		DWORD del=RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5F7C + OffsetAuto);
-//		DWORD left,right;
-//		del>0?left=316:left=396;
-//		right=1024-left;
-//
-//		
-//		DWORD Time=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x14);
-//		if((Time > left && Time < left+40) || (Time > right-40 && Time< right) )
-//		{
-//			DWORD key=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x8);
-//			DWORD delC=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x1C);
-//			if(delC!=1)
-//				SetSendKey(key);
-//		}
-//		}
-//		Sleep(1);
-//	}
-//	return 0;
-//}
+int AutoBeatUp()
+{
+	DWORD OffsetAuto = 0x30;
+	int result;
+	int AddressBase;
+	int space_time;
+	bool F11PRESS = true;
+	while(1){
+		ReadProcessMemory(GetCurrentProcess(), (LPCVOID)(BUCOUNT), &AddressBase, 4, 0);
+		ReadProcessMemory(GetCurrentProcess(), (LPCVOID)(AddressBase + (TIMESPACE__ + OffsetAuto)), &space_time, 4, 0);
+		if (GetAsyncKeyState(VK_F3)){
+			AutoOn = true;
+			vAuto++;
+		}
+		if (GetAsyncKeyState(VK_F4)){
+			AutoOn = false;
+			result = 0;
+		}
+		if (AutoOn){
+			if (space_time < 1){
+				SetSendKey(5);
+			}
+		//Canh Phim
+		DWORD i=0;
+		DWORD v=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x20);
+		while(v>=0 && v<=6)
+		{
+			i++;
+			v=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x20);
+		}
+		DWORD del=RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5F7C + OffsetAuto);
+		DWORD left,right;
+		del>0?left=316:left=396;
+		right=1024-left;
+
+		
+		DWORD Time=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x14);
+		if((Time > left && Time < left+40) || (Time > right-40 && Time< right) )
+		{
+			DWORD key=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x8);
+			DWORD delC=RD(RD(RD(RD(RD(BASE_INFOMATION)+0x1C)+0x5EDC + OffsetAuto)+4*i)+0x1C);
+			if(delC!=1)
+				SetSendKey(key);
+		}
+		}
+		Sleep(1);
+	}
+	return 0;
+}
 int AutoBUMain()
 {
 	while(1){
@@ -197,11 +197,11 @@ int AutoBUMain()
 		ReadProcessMemory(GetCurrentProcess(), (LPCVOID)(Base_1 + 0x1C), &Base_2, 4, 0);
 		WriteProcessMemory(GetCurrentProcess(), (LPVOID)(Base_2 + (0x5F7C + OffsetAuto)), &KEYON, 4, 0);
 
-		//WriteProcessMemory(GetCurrentProcess(), (LPVOID)DELNOTICE, &notice, sizeof(notice), 0);
+		WriteProcessMemory(GetCurrentProcess(), (LPVOID)DELNOTICE, &notice, sizeof(notice), 0);
 		}else{
-			//WriteProcessMemory(GetCurrentProcess(), (LPVOID)DELNOTICE, &deldefault, sizeof(deldefault), 0);
+			WriteProcessMemory(GetCurrentProcess(), (LPVOID)DELNOTICE, &deldefault, sizeof(deldefault), 0);
 		}
-	Sleep(10);
+	Sleep(1);
 	}
 	return 0;
 }

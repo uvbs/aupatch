@@ -12,4 +12,5 @@ char *winlose();
 int gift();
 int ret_D3D_HWND();
 void mThread();
+int AutoBeatUp();
 HRESULT WINAPI Direct3DCreate9_VMTable(VOID);
